@@ -16,7 +16,7 @@ export default ({pageContext: {repository}}) => (
                     <Container fluid={true}>
                         <Row>
                             <Col lg={1}>
-                                <img src={repository.avatarUrl} height={60} width={60}/>
+                                <img src={repository.avatarUrl} height={60} width={60} alt={repository.name}/>
                             </Col>
                             <Col>
                                 <h2>{`${repository.owner}/${repository.name}`}</h2>

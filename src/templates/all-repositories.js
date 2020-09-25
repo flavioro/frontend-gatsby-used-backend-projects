@@ -7,19 +7,39 @@ import {
     Button, ListGroup, ListGroupItem, ListGroupItemHeading, ListGroupItemText, Container, Row, Col
 } from "reactstrap";
 
+// function Projetos({pageContext: {projects}}) {
+
+//     return (
+//         <> 
+//             <h1>Projetos</h1>
+//             <ul>
+//                 {projects.map(project => 
+//                     <li key={project.id}>
+//                         <p>Id:{project.id}</p>
+//                         Projeto:{project.descricao_projeto}
+//                         <p>Area_construida:{project.area_construida}</p>
+//                     </li>)}
+//             </ul>
+//         </>
+//     )
+// }
+
+// export default Projetos
+
 export default ({pageContext: {repositories}}) => (
     <div className="layout">
         <h1 className="title">Repositories</h1>
         <ListGroup>
+            {console.log(repositories)}
             {/* Because repositories parameter is a list, we are iterating over each item and using their fields */}
-            {repositories.map(repository => (repository.tagName &&
+            {repositories.map(repository => (repository.id &&
                 <ListGroupItem className="repository-list-item">
                     <Link to={`/repository/${repository.owner}/${repository.name}`}>
                         <ListGroupItemHeading className="text-muted">
                             <Container fluid={true}>
                                 <Row>
                                     <Col lg={1}>
-                                        <img src={repository.avatarUrl} height={60} width={60}/>
+                                        <img src="www.google.com" height={60} width={60} alt={repository.name}/>
                                     </Col>
                                     <Col>
                                         <h2>{`${repository.owner}/${repository.name}`}</h2>
@@ -29,7 +49,7 @@ export default ({pageContext: {repositories}}) => (
                             <hr/>
                         </ListGroupItemHeading>
                     </Link>
-                    <ListGroupItemText>
+                    {/* <ListGroupItemText>
                         <Container fluid={true} className="repository-data-container">
                             <Row>
                                 {`${repository.repositoryDescription}`}
@@ -51,9 +71,11 @@ export default ({pageContext: {repositories}}) => (
                                 </a>}
                             </Row>
                         </Container>
-                    </ListGroupItemText>
+                    </ListGroupItemText> */}
                 </ListGroupItem>
             ))}
         </ListGroup>
     </div>
 );
+
+
