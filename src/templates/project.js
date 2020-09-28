@@ -1,32 +1,37 @@
 import React from 'react';
-import ReactMarkdown from "react-markdown";
+// import ReactMarkdown from "react-markdown";
 import {Link} from 'gatsby';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 import {
-    Button, ListGroupItem, ListGroupItemHeading, ListGroupItemText, Container, Row, Col
+    Button, ListGroupItem, ListGroupItemHeading, Container, Row, Col
 } from "reactstrap";
 
-export default ({pageContext: {repository}}) => (
+export default ({pageContext: {project}}) => (
     <div className="layout">
-        {repository.tagName &&
+        {/* {console.log('project', project)} */}
+        {project.id &&
         <ListGroupItem className="repository-list-item">
-            <Link to={`/repository/${repository.owner}/${repository.name}`}>
+            <Link to={`/project/${project.id}`}>
                 <ListGroupItemHeading className="text-muted">
                     <Container fluid={true}>
                         <Row>
                             <Col lg={1}>
-                                <img src={repository.avatarUrl} height={60} width={60} alt={repository.name}/>
+                                <img src='https://www.archshop.com.br/assets/img/todos-os-projetos/casa-sydney-106.jpg' 
+                                height={60} width={60} alt={project.descricao_projeto}/>
                             </Col>
                             <Col>
-                                <h2>{`${repository.owner}/${repository.name}`}</h2>
+                            <h2>{`id: ${project.id}`}</h2>
+                            <h2>{`projeto: ${project.descricao_projeto}`}</h2>
+                            <h3>{`quartos: ${project.quartos}`}</h3>
+                            <h3>{`suites: ${project.suites}`}</h3>
                             </Col>
                         </Row>
                     </Container>
                     <hr/>
                 </ListGroupItemHeading>
             </Link>
-            <ListGroupItemText>
+            {/* <ListGroupItemText>
                 <Container fluid={true} className="repository-data-container">
                     <Row>
                         <Col>
@@ -55,14 +60,14 @@ export default ({pageContext: {repository}}) => (
                     </Row>
                     <h1 className="release-notes">{`Release notes`}</h1>
                     <hr/>
-                    {/* This the place where we will use markdown formatted release notes */}
+                    {/* This the place where we will use markdown formatted release notes }
                     <ReactMarkdown source={`${repository.releaseDescription}`}/>
                 </Container>
-            </ListGroupItemText>
+            </ListGroupItemText> */}
         </ListGroupItem>
         }
         <Link to={`/`}>
-            <Button size="sm" outline color="danger">{`Back to All Repositories`}</Button>
+            <Button size="sm" outline color="danger">{`Back to All Projects`}</Button>
         </Link>
     </div>
 );
